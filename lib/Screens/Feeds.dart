@@ -4,7 +4,8 @@ import 'package:newsapp/Screens/Newsdescription.dart';
 import 'package:newsapp/Screens/Newsfeedswipe.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:flutter_offline/flutter_offline.dart';
+import 'package:connectivity/connectivity.dart';
 
 class Feeds extends StatefulWidget
 {
@@ -28,7 +29,7 @@ class _FeedsState extends State<Feeds>
 
   }
   Future<String> getData() async{
-    var response =await http.get(Uri.encodeFull(url),headers: {"ACCEPT":"application/json"});
+    var response = await http.get(Uri.encodeFull(url),headers: {"ACCEPT":"application/json"});
     setState(() {
       var convertDataToJson=json.decode(response.body);
       data= convertDataToJson['news'];
@@ -38,7 +39,57 @@ class _FeedsState extends State<Feeds>
   Widget build (BuildContext context)
   {
     double width=MediaQuery.of(context).size.width;
-    return Container(
+      return OfflineBuilder(
+        debounceDuration: Duration.zero,
+        connectivityBuilder: (
+            BuildContext context,
+            ConnectivityResult connectivity,
+            Widget child,
+            ) {
+          if (connectivity == ConnectivityResult.none) {
+    return Scaffold(
+              
+              body: 
+              Center(child: Stack(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                     Container(
+                       width: 200.0,
+                       height: 200.0,
+                       decoration: new BoxDecoration(
+                         color: Colors.transparent,
+                         image: DecorationImage(
+                           fit: BoxFit.contain,
+                           image: new ExactAssetImage('assets/network.gif'),
+                         )
+                       ),
+                       
+                     ),
+                    ],
+                  ),
+                 Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: <Widget>[
+                     Padding(
+                       padding: EdgeInsets.only(top:200.0),
+                       child:  Text('Please check your internet connection',style: new TextStyle(
+                                fontFamily: 'Nunito-Regular',
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black,
+                              ),),
+                     )
+                   ],
+                 )
+                ],
+              )),
+            );
+          }
+          return child;
+        },
+    child: Container(
 
     
       child: SafeArea(
@@ -61,7 +112,7 @@ class _FeedsState extends State<Feeds>
                   children: <Widget>[
                     Container(
                   width: width,
-                  height: 250,
+                  height: 200,
                   color: Colors.white60,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
@@ -357,7 +408,7 @@ class _FeedsState extends State<Feeds>
             itemBuilder: (BuildContext context, int index){
               return InkWell(
                 child:  Container(
-              margin: EdgeInsets.only(top: 10,bottom: 10),
+              margin: EdgeInsets.only(top: 10,bottom: 10,left: 15,right: 10),
               width: 380,
               height: 100,
               decoration: BoxDecoration(
@@ -471,8 +522,9 @@ class _FeedsState extends State<Feeds>
       ),
          )
       )
-      
-      
+      )
     );
-  }
+
+          }    
+
 }

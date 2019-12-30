@@ -19,6 +19,7 @@ dependencies:
   json_annotation: ^3.0.1
   connectivity: ^0.4.6+1
   http: ^0.12.0+3
+  flutter_offline: ^0.3.0
   
 
 dev_dependencies:
@@ -29,7 +30,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/logo.png
-    - assets/logo1.png
+    - assets/network.gif
     - assets/walk1.png
     - assets/walk2.png
     - assets/walk3.png

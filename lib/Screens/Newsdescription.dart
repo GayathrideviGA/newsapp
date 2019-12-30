@@ -1,15 +1,11 @@
 import'package:flutter/material.dart';
 import 'package:newsapp/Screens/Bookmark.dart';
+import 'package:newsapp/Screens/Feeds.dart';
 import 'package:simple_share/simple_share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Newsdescription extends StatefulWidget
-{
-  static String tag='Newsdescription';
-  _NewsdescriptionState createState()=> _NewsdescriptionState();
-  }
-  
-  class _NewsdescriptionState extends State<Newsdescription> 
+
+  class Newsdescription extends StatelessWidget
   {
     _launchURL() async {
   const url = 'https://timesofindia.indiatimes.com/entertainment/tamil/movies/news/thala-ajiths-dual-getup-for-valimai/articleshow/72154793.cms';
@@ -19,6 +15,10 @@ class Newsdescription extends StatefulWidget
     throw 'Could not launch $url';
   }
 }
+  final Feeds feedsdescription;
+
+  // In the constructor, require a Todo.
+  Newsdescription({Key key, @required this.feedsdescription}) : super(key: key);
 
     Widget build (BuildContext context)
     {
@@ -98,7 +98,7 @@ class Newsdescription extends StatefulWidget
                  Container(
                           padding: EdgeInsets.only(top:20,left: 20,bottom: 10),
                           width: width/1.2,
-                          child: Text("Thala Ajith's dual getup for valimai",overflow: TextOverflow.ellipsis,style:TextStyle(fontSize: 18,fontWeight:FontWeight.w500,color: Colors.black)),
+                          child: Text(feedsdescription.headline,overflow: TextOverflow.ellipsis,style:TextStyle(fontSize: 18,fontWeight:FontWeight.w500,color: Colors.black)),
                           
                         ),
                   Padding(
