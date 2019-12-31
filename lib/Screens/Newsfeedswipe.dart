@@ -1,6 +1,4 @@
-import 'package:newsapp/Screens/Newsdescription.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 class Newsfeedswipe extends StatefulWidget
 {
@@ -15,7 +13,7 @@ class _Newsfeedswipe extends State<Newsfeedswipe>
     return Scaffold(
       body:Stack(
         children: <Widget>[
-          new Swiper(
+        /*  new Swiper(
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context,int index){
           return new Newsdescription();
@@ -23,7 +21,7 @@ class _Newsfeedswipe extends State<Newsfeedswipe>
         itemCount: 3,
         //pagination: new SwiperPagination(),
        // control: new SwiperControl(),
-          )
+          )*/
         ],
       )
     );

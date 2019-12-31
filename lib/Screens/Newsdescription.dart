@@ -98,7 +98,7 @@ import 'package:url_launcher/url_launcher.dart';
                  Container(
                           padding: EdgeInsets.only(top:20,left: 20,bottom: 10),
                           width: width/1.2,
-                          child: Text(feedsdescription.headline,overflow: TextOverflow.ellipsis,style:TextStyle(fontSize: 18,fontWeight:FontWeight.w500,color: Colors.black)),
+                          child: Text('Headline',overflow: TextOverflow.ellipsis,style:TextStyle(fontSize: 18,fontWeight:FontWeight.w500,color: Colors.black)),
                           
                         ),
                   Padding(

@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:newsapp/Screens/Newsdescription.dart';
-import 'package:newsapp/Screens/Newsfeedswipe.dart';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:flutter_offline/flutter_offline.dart';
+
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_offline/flutter_offline.dart';
+import 'package:http/http.dart' as http;
+import 'package:newsapp/Screens/Newsfeedswipe.dart';
 
 class Feeds extends StatefulWidget
 {
@@ -23,6 +23,7 @@ class _FeedsState extends State<Feeds>
 {
   final String url="https://testapi.io/api/GayathrideviGA/newsapi";
   List data;
+  
   @override
   void initState(){
     this.getData();
@@ -501,13 +502,13 @@ class _FeedsState extends State<Feeds>
               ],
             ),
             ),
-             onTap: (){
+           /*  onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => Newsdescription(),
                       settings: RouteSettings(
                         arguments: data[index],
                       )
                       ));
-                },
+                },*/
               );
             },
           )
