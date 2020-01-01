@@ -5,6 +5,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:http/http.dart' as http;
+import 'package:newsapp/Screens/Newsdescription.dart';
 import 'package:newsapp/Screens/Newsfeedswipe.dart';
 
 class Feeds extends StatefulWidget
@@ -90,7 +91,51 @@ class _FeedsState extends State<Feeds>
           }
           return child;
         },
-    child: Container(
+    child: data==null ? Scaffold(
+     backgroundColor: Colors.white,
+     body: Column
+     (
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: <Widget>
+       [
+         Row
+         (
+           mainAxisAlignment: MainAxisAlignment.center,
+
+           children: <Widget>
+           [
+             Container
+             (
+               width: 150,
+               height: 150,
+               margin: EdgeInsets.all(20),
+               decoration:  BoxDecoration
+               (
+                 image: DecorationImage
+                 (
+                   image: AssetImage('assets/news.png'),
+                   fit: BoxFit.cover
+                 ),
+
+                 
+               )
+             )
+
+
+           ],
+           
+         ),
+         Row
+         (
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>
+            [
+              Text('Your search result not found',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,color: Colors.blueGrey),)
+            ],
+         )
+       ],
+     ),
+    ) : Container(
 
     
       child: SafeArea(
@@ -384,12 +429,29 @@ class _FeedsState extends State<Feeds>
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(top: 10,left: 209),
-                      child: InkWell(
+                      child: Container(
+                        width: width,
+                        child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: data.length,
+                        itemBuilder: (BuildContext context, int index)
+                        {
+                          return InkWell(
                         onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder:(context)=>Newsfeedswipe()));
+                          Navigator.push(context, MaterialPageRoute(builder:(context)=>Newsfeedswipe(
+                            headernewsswipe: data[index]['headline'],
+                            descriptorswipe: data[index]['description'],
+                            authorNameswipe: data[index]['author'],
+                            timingswipe: data[index]['timeline'],
+                            mainImageswipe: data[index]['newsimage'],
+                          )));
                         },
                         child: Text('View all',style:TextStyle(fontSize: 16,fontWeight:FontWeight.w400,color: Colors.green)),
-                      ))
+                      );
+                        }
+                      ),
+                      )
+                      )
                   ],
                 )
               ],
@@ -502,13 +564,18 @@ class _FeedsState extends State<Feeds>
               ],
             ),
             ),
-           /*  onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Newsdescription(),
-                      settings: RouteSettings(
-                        arguments: data[index],
-                      )
+             onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Newsdescription(
+                         headernews: data[index]['headline'],
+                         descriptor: data[index]['description'],
+                         authorName: data[index]['author'],
+                         timing: data[index]['timeline'],
+                         mainImage: data[index]['newsimage'],
+
+                      ),
+                      
                       ));
-                },*/
+                },
               );
             },
           )
