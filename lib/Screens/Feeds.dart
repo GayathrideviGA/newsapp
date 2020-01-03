@@ -22,7 +22,9 @@ class Feeds extends StatefulWidget
 
 class _FeedsState extends State<Feeds>
 {
-  final String url="https://testapi.io/api/GayathrideviGA/newsapi";
+//  final String url="https://testapi.io/api/GayathrideviGA/newsapi";
+    final String url="https://api.myjson.com/bins/epojw";
+  
   List data;
   
   @override
@@ -52,7 +54,8 @@ class _FeedsState extends State<Feeds>
     return Scaffold(
               
               body: 
-              Center(child: Stack(
+              Center(
+                child: Stack(
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -408,54 +411,30 @@ class _FeedsState extends State<Feeds>
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(top: 20,left: 20),
+                    padding: EdgeInsets.only(top:20,left: 20),
                     child: Text('Latest news',style:TextStyle(color: Colors.blue,fontSize:16,fontWeight:FontWeight.w500)),
-                  )
+                  ),
+
                 ],
               ),
 
-               Row(
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(top: 10,left: 20),
-                      child: Text('Dummy text',style:TextStyle(fontSize: 16,fontWeight:FontWeight.w400,color: Colors.green)),
-                    )
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 10,left: 20),
+                    child: Text('Updated 5 mins ago',style:TextStyle(fontSize: 16,fontWeight:FontWeight.w400,color: Colors.green)),
+                    
+                  ),
 
-                Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(top: 10,left: 209),
-                      child: Container(
-                        width: width,
-                        child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: data.length,
-                        itemBuilder: (BuildContext context, int index)
-                        {
-                          return InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder:(context)=>Newsfeedswipe(
-                            headernewsswipe: data[index]['headline'],
-                            descriptorswipe: data[index]['description'],
-                            authorNameswipe: data[index]['author'],
-                            timingswipe: data[index]['timeline'],
-                            mainImageswipe: data[index]['newsimage'],
-                          )));
-                        },
-                        child: Text('View all',style:TextStyle(fontSize: 16,fontWeight:FontWeight.w400,color: Colors.green)),
-                      );
-                        }
-                      ),
-                      )
-                      )
-                  ],
-                )
-              ],
-            ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10,right: 20),
+                   child: Text('View all',style:TextStyle(fontSize: 16,fontWeight:FontWeight.w400,color: Colors.green)),
+      
+                  ),
+
+                ],
+              ),
 
             Row(
               children: <Widget>[
