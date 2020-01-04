@@ -1,6 +1,5 @@
 import'package:flutter/material.dart';
 import 'package:newsapp/Screens/Bookmark.dart';
-import 'package:newsapp/Screens/Feeds.dart';
 import 'package:simple_share/simple_share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,10 +14,15 @@ import 'package:url_launcher/url_launcher.dart';
     throw 'Could not launch $url';
   }
 }
-  final Feeds feedsdescription;
+  final String headernews ;
+  final String descriptor ;
+  final String authorName ;
+  final String timing ;
+  final String mainImage;
 
   // In the constructor, require a Todo.
-  Newsdescription({Key key, @required this.feedsdescription}) : super(key: key);
+  Newsdescription({Key key, @required this.headernews,this.descriptor,this.authorName,this.timing,this.mainImage}) : super(key: key);
+ 
 
     Widget build (BuildContext context)
     {
@@ -38,7 +42,7 @@ import 'package:url_launcher/url_launcher.dart';
                   decoration: BoxDecoration(
                     color: Colors.white,
                     image: DecorationImage(
-                      image: AssetImage('assets/act7.png'),
+                      image: NetworkImage(mainImage),
                       fit: BoxFit.cover
                     ),
                     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50),bottomRight: Radius.circular(50)),
@@ -98,7 +102,7 @@ import 'package:url_launcher/url_launcher.dart';
                  Container(
                           padding: EdgeInsets.only(top:20,left: 20,bottom: 10),
                           width: width/1.2,
-                          child: Text('Headline',overflow: TextOverflow.ellipsis,style:TextStyle(fontSize: 18,fontWeight:FontWeight.w500,color: Colors.black)),
+                          child: Text(headernews,overflow: TextOverflow.ellipsis,style:TextStyle(fontSize: 18,fontWeight:FontWeight.w500,color: Colors.black)),
                           
                         ),
                   Padding(
@@ -122,11 +126,11 @@ import 'package:url_launcher/url_launcher.dart';
               children: <Widget>[
                Padding(
                       padding: EdgeInsets.only(top: 5,left: 25),
-                      child: Text('By Sam',style:TextStyle(fontSize: 12,fontWeight:FontWeight.w400,color: Colors.green)),
+                      child: Text(authorName,style:TextStyle(fontSize: 12,fontWeight:FontWeight.w400,color: Colors.green)),
                     ),
                Padding(
                       padding: EdgeInsets.only(top: 5,right: 25),
-                      child: Text('15 mins ago',style:TextStyle(fontSize: 12,fontWeight:FontWeight.w400,color: Colors.green)),
+                      child: Text(timing,style:TextStyle(fontSize: 12,fontWeight:FontWeight.w400,color: Colors.green)),
                     )
               ],
             ),
@@ -138,7 +142,7 @@ import 'package:url_launcher/url_launcher.dart';
                   padding: EdgeInsets.only(top: 20),
                   width: width/1.15,
                  // height: 200,
-                  child: Text("Actor Ajith's upcoming film 'Valimai' directed by H Vinoth, who directed Ajith in 'Nerkonda Paarvai', has been making waves ever since the film was announced. The film produced by Boney Kapoor, who also bankrolled 'Nerkonda Paarvai' has music by Yuvan Shankar Raja and cinematography by Nirav Shah. It is known that Ajith is all set to play a police officer in the Tamil film.",textAlign:TextAlign.justify,style: TextStyle(color: Colors.blueGrey,fontSize: 14,fontWeight: FontWeight.w400,height: 1.8),),
+                  child: Text(descriptor,textAlign:TextAlign.justify,style: TextStyle(color: Colors.blueGrey,fontSize: 14,fontWeight: FontWeight.w400,height: 1.8),),
                 )
               ],
             ),
