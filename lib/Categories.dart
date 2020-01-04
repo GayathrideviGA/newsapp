@@ -1,13 +1,50 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:gradient_text/gradient_text.dart';
+import 'package:http/http.dart' as http;
 
 class Categories extends StatefulWidget {
   static String tag = 'Categories';
+   final String regionimage;
+  final String region;
+  final String actorimage;
+  final String actorname;
+  final String launches;
+  Categories({this.regionimage,this.region,this.actorimage,this.actorname,this.launches});
   @override
   _CategoriesState createState() => _CategoriesState();
 }
 
 class _CategoriesState extends State<Categories> {
+
+  final String url="https://api.myjson.com/bins/r34tg";
+  List data;
+  List<dynamic> regional;
+  List<dynamic> actor; 
+  List<dynamic> intrest;
+  @override
+  void initState(){
+    this.getData();
+
+  }
+  Future<String> getData() async
+  {
+    var response = await http.get(Uri.encodeFull(url),headers: {"ACCEPT":"application/json"});
+    setState(() {
+      var convertDataToJson=json.decode(response.body);
+       data= convertDataToJson['categories'];
+      
+         regional= convertDataToJson['categories'][0]['regional'];
+
+        actor= convertDataToJson['categories'][0]['actor'];
+        intrest= convertDataToJson['categories'][0]['intrest'];
+
+    });
+    return "success";
+  } 
+
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -39,17 +76,20 @@ class _CategoriesState extends State<Categories> {
                   width: width,
                   height: 150,
                   color: Colors.white60,
-                  child: ListView(
+                  child: ListView.builder(
+                    itemCount: regional.length,
+                    shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      Container(
+                    itemBuilder: (BuildContext context,int index)
+                    {
+                      return Container(
                         margin: EdgeInsets.only(
                             top: 10, left: 20, bottom: 10, right: 10),
                         width: 100,
                         height: 80,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/tamil.png'),
+                                image: NetworkImage(regional[index]['regionimage']),
                                 fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
@@ -69,7 +109,7 @@ class _CategoriesState extends State<Categories> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
-                                      Text('kollywood',
+                                      Text(regional[index]['region'],
                                           style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 12,
@@ -81,203 +121,9 @@ class _CategoriesState extends State<Categories> {
                             )
                           ],
                         ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        width: 100,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/malayalam.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(10),
-                                      bottomRight: Radius.circular(10))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Malayalam',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        width: 100,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/telgu.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(10),
-                                      bottomRight: Radius.circular(10))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Tollywood',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        width: 100,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/kannada.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(10),
-                                      bottomRight: Radius.circular(10))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Sandalwood',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        width: 100,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/hindi.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(10),
-                                      bottomRight: Radius.circular(10))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Bollywood',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        width: 100,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/hollywood.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(10),
-                                      bottomRight: Radius.circular(10))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Hollywood',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
+                      );
+                      
+                    }
                   ),
                 )
               ],
@@ -302,17 +148,19 @@ class _CategoriesState extends State<Categories> {
                 Container(
                   width: width,
                   height: 100,
-                  child: ListView(
+                  child: ListView.builder(
+                    itemCount: actor.length,
                     scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      Container(
+                    itemBuilder: (BuildContext context, int index)
+                    {
+                     return Container(
                         margin: EdgeInsets.only(
                             left: 20, right: 10, bottom: 10, top: 10),
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/act1.png'),
+                                image: NetworkImage(actor[index]['actorimage']),
                                 fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(20)),
                         child: Column(
@@ -332,7 +180,7 @@ class _CategoriesState extends State<Categories> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
-                                      Text('Samantha',
+                                      Text(actor[index]['actorname'],
                                           style: TextStyle(
                                               color: Colors.black,
                                               fontSize: 12,
@@ -344,289 +192,9 @@ class _CategoriesState extends State<Categories> {
                             ),
                           ],
                         ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/act2.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 80,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Vijay',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 20, bottom: 10, top: 10),
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/act3.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Chaitanya',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 20, bottom: 10, top: 10),
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/act4.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Rajini',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 20, bottom: 10, top: 10),
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/act5.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Trisha',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 20, bottom: 10, top: 10),
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/act6.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 60,
-                                        child: Text('Ramya krishnan',
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w500)),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 20, bottom: 10, top: 10),
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/act7.png'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Ajith',
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: 20, bottom: 10, top: 10, right: 10),
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('assets/act8.png'),
-                              fit: BoxFit.cover),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              width: 100,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey.withOpacity(0.9),
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text('Jyothika',
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      );
+                    } 
+                    
                   ),
                 )
               ],

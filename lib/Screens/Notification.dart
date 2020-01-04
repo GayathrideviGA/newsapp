@@ -43,7 +43,7 @@ class _Notification extends State<Notification>
           ),
           child: InkWell(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Newsfeedswipe()));
+            //  Navigator.push(context, MaterialPageRoute(builder: (context)=>Newsfeedswipe()));
             },
 
             child: Container(
