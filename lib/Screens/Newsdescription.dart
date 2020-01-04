@@ -1,6 +1,5 @@
 import'package:flutter/material.dart';
 import 'package:newsapp/Screens/Bookmark.dart';
-import 'package:newsapp/Screens/Feeds.dart';
 import 'package:simple_share/simple_share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
