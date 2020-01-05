@@ -48,6 +48,7 @@ class _CategoriesState extends State<Categories> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Stack(
       children: <Widget>[
@@ -214,121 +215,10 @@ class _CategoriesState extends State<Categories> {
                 )
               ],
             ),
-            Row(
+           Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-              
-                    Column(
-                      
-                      children: <Widget>[
-                       InkWell(
-                         onTap: (){},
-                         child:  Container(
-                          margin: EdgeInsets.all(10),
-                          width: 100,
-                          height: 100,
-                         decoration: BoxDecoration(
-                           gradient: LinearGradient(
-                             colors: [Colors.lightBlue[800],Colors.lightBlue[600],Colors.lightBlue[400],Colors.lightBlue[200],]
-                           ),
-                           borderRadius: BorderRadius.circular(10)
-                         ),
-                         child: Column(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           children: <Widget>[
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.center,
-                               children: <Widget>[
-                                    Text('Audio\nlaunches',
-                                         textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500)),
-                               ],
-                             )
-                           ],
-                         ),
-                        ),
-                       )
-                      ],
-                    ),
-                    Column(
-                     
-                      children: <Widget>[
-                        InkWell(
-                          onTap: (){},
-                          child: Container(
-                          margin: EdgeInsets.all(10),
-                          width: 100,
-                          height: 100,
-                         decoration: BoxDecoration(
-                           gradient: LinearGradient(
-                             colors: [Colors.green[800],Colors.green[600],Colors.green[400],Colors.green[200],]
-                           ),
-                           borderRadius: BorderRadius.circular(10)
-                         ),
-                         child: Column(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           children: <Widget>[
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.center,
-                               children: <Widget>[
-                                    Text('Audio\nlaunches',
-                                         textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500)),
-                               ],
-                             )
-                           ],
-                         ),
-                        ),
-                        )
-                      ],
-                    ),
-                 Column(
-                     
-                      children: <Widget>[
-                        InkWell(
-                          onTap: (){},
-                          child: Container(
-                          margin: EdgeInsets.all(10),
-                          width: 100,
-                          height: 100,
-                         decoration: BoxDecoration(
-                           gradient: LinearGradient(
-                             colors: [Colors.deepPurple[800],Colors.deepPurple[600],Colors.deepPurple[400],Colors.deepPurple[200],]
-                           ),
-                           borderRadius: BorderRadius.circular(10)
-                         ),
-                         child: Column(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           children: <Widget>[
-                             Row(
-                               mainAxisAlignment: MainAxisAlignment.center,
-                               children: <Widget>[
-                                    Text('Audio\nlaunches',
-                                         textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500)),
-                               ],
-                             )
-                           ],
-                         ),
-                        ),
-                        )
-                      ],
-                    ),
-              ],
-            ),
-             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                                       Column(
+                  Column(
                      
                       children: <Widget>[
                         InkWell(
@@ -435,7 +325,8 @@ class _CategoriesState extends State<Categories> {
                       ],
                     ),
               ],
-            )
+            ),
+             
           ],
         )
       ],

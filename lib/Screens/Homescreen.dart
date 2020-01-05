@@ -92,6 +92,7 @@ class _HomescreenState extends State<Homescreen> with SingleTickerProviderStateM
                          appBar: PreferredSize(
                                       preferredSize: Size.fromHeight(50.0),
                                       child: AppBar(
+                                        elevation: 0,
                                           backgroundColor: Colors.white,
                                           bottom: TabBar(
                                             controller: _tabcontroller,
