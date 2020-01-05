@@ -42,33 +42,33 @@ class _HomescreenState extends State<Homescreen> with SingleTickerProviderStateM
               children: <Widget>[
                 Container(
                   width: width,
-                  height: height/12,
+                  height: height/14,
                   color: Colors.white,
                   child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                Padding(
-                 padding: EdgeInsets.only(top: 5,left: 20,right: 20,bottom: 10),
+                 padding: EdgeInsets.only(top: 5,left: 10,right: 20,bottom: 10),
                  child: IconButton(
-                   icon: Icon(Icons.settings,color:Colors.lightBlue),
+                   icon: Icon(Icons.settings,color:Color(0xFF4181ee)),
                    onPressed: (){
                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Settings()));
                    },
                  ),
                ),
                 Padding(
-                 padding: EdgeInsets.only(top: 5,left: 20,right: 20,bottom: 10),
+                 padding: EdgeInsets.only(top: 5,left: 30,right: 20,bottom: 10),
                  child: GradientText(
-                   'Casttree News',
-                   gradient:LinearGradient(colors: [Colors.lightBlue,Colors.green,Colors.green[400]],
+                   'News App',
+                   gradient:LinearGradient(colors: [Color(0xFF4181ee),Color(0xFF48f5f7)],
                    ),
                    style: TextStyle(fontSize: 25,fontWeight: FontWeight.w400),
                  )
                ),
                 Padding(
-                 padding: EdgeInsets.only(top: 5,left: 20,right: 20,bottom: 10),
+                 padding: EdgeInsets.only(top: 5,left: 30,right: 10,bottom: 10),
                  child: IconButton(
-                   icon: Icon(Icons.search,color:Colors.lightBlue),
+                   icon: Icon(Icons.search,color:Color(0xFF4181ee)),
                    onPressed: (){},
                  ),
                )
@@ -81,7 +81,7 @@ class _HomescreenState extends State<Homescreen> with SingleTickerProviderStateM
               children: <Widget>[
                 Container(
                   width: width,
-                  height: height-height/12,
+                  height: height-(height/14),
                   child: MaterialApp(
                     debugShowCheckedModeBanner: false,
                     home: DefaultTabController(
@@ -98,52 +98,49 @@ class _HomescreenState extends State<Homescreen> with SingleTickerProviderStateM
                                             controller: _tabcontroller,
                                             tabs: <Tab>[
                                               new Tab(
-                                                child: Padding(
-                                                    padding: EdgeInsets.only(
-                                                        bottom: 5.0),
-                                                    child: Text(
+                                                child:  Text(
                                                       'Discover',
                                                       style: TextStyle(
-                                                          color: Colors.lightBlue,
+                                                          color: Color(0xFF4181ee),
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           fontFamily:
                                                               'Canterbury'),
-                                                    )),
+                                                    )
                                               ),
                                               new Tab(
-                                                child: Padding(
-                                                    padding: EdgeInsets.only(
-                                                        bottom: 5.0),
-                                                    child: Text(
+                                                child:  Text(
                                                       'Feeds',
                                                       style: TextStyle(
-                                                          color: Colors.lightBlue,
+                                                          color: Color(0xFF4181ee),
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           fontFamily:
                                                               'Canterbury'),
-                                                    )),
+                                                    )
                                               ),
                                               new Tab(
-                                                child: Padding(
-                                                    padding: EdgeInsets.only(
-                                                        bottom: 5.0),
-                                                    child: Text(
+                                                child: Text(
                                                       'Bookmarks',
                                                       style: TextStyle(
-                                                          color: Colors.lightBlue,
+                                                          color: Color(0xFF4181ee),
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           fontFamily:
                                                               'Canterbury'),
-                                                    )),
+                                                    )
                                               ),
                                             ],
-                                            indicatorColor: Colors.lightGreen,
+                                            indicator:UnderlineTabIndicator(
+                                              insets: EdgeInsets.symmetric(horizontal: 30),
+                                              borderSide: BorderSide(
+                                                width: 2,
+                                                color: Color(0xFF48f5f7),
+                                              )
+                                            )
                                           ))),
                                           body: TabBarView(
                                             controller: _tabcontroller,

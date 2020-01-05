@@ -137,7 +137,7 @@ class _WalkthroughState extends State<Walkthrough> with TickerProviderStateMixin
                         backgroundColor: Colors.white,
                         child: Icon(
                           Icons.arrow_forward,
-                          color: Color(0XFF91e5d6),
+                          color: Color(0XFF48f5f7),
                         ),
                         onPressed: () {
                           Navigator.push(

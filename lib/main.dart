@@ -16,7 +16,7 @@ void main() => runApp(
   new MaterialApp(
   debugShowCheckedModeBanner: false,
      home: AnimatedSplash(
-            imagePath: 'assets/logo.png',
+            imagePath: 'assets/logonews.png',
               home: Walkthrough(),
             duration: 2500,
             type: AnimatedSplashType.StaticDuration,

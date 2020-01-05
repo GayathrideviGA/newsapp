@@ -30,6 +30,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/logo.png
+    - assets/logonews.png
     - assets/network.gif
     - assets/walk1.png
     - assets/walk2.png

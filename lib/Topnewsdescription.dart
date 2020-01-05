@@ -3,23 +3,23 @@ import 'package:newsapp/Screens/Bookmark.dart';
 import 'package:simple_share/simple_share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Newsdescription extends StatelessWidget {
-  final String headernews;
-  final String descriptor;
-  final String authorName;
-  final String timing;
-  final String mainImage;
-  final String nurl;
+class Topnewsdescription extends StatelessWidget {
+  final String theadernews;
+  final String tdescriptor;
+  final String tauthorName;
+  final String ttiming;
+  final String tmainImage;
+  final String turl;
 
   // In the constructor, require a Todo.
-  Newsdescription(
+  Topnewsdescription(
       {Key key,
-      @required this.headernews,
-      this.descriptor,
-      this.authorName,
-      this.timing,
-      this.mainImage,
-      this.nurl})
+      @required this.theadernews,
+      this.tdescriptor,
+      this.tauthorName,
+      this.ttiming,
+      this.tmainImage,
+      this.turl})
       : super(key: key);
 
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class Newsdescription extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         image: DecorationImage(
-                            image: NetworkImage(mainImage), fit: BoxFit.cover),
+                            image: NetworkImage(tmainImage), fit: BoxFit.cover),
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(50),
                             bottomRight: Radius.circular(50)),
@@ -97,15 +97,15 @@ class Newsdescription extends StatelessWidget {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.only(top: 20, left: 20, bottom: 10),
+                    padding: EdgeInsets.only(top: 20, left: 25, bottom: 10),
                     width: width / 1.2,
-                    child: Text(headernews,
+                    child: Text(theadernews,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: Colors.black)),
                   ),
@@ -118,7 +118,7 @@ class Newsdescription extends StatelessWidget {
                         );
                       },
                       icon: Icon(Icons.share),
-                      color: Colors.blue,
+                      color: Color(0xff4181ee),
                     ),
                   )
                 ],
@@ -128,19 +128,19 @@ class Newsdescription extends StatelessWidget {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(top: 5, left: 25),
-                    child: Text(authorName,
+                    child: Text(tauthorName,
                         style: TextStyle(
                             fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.green)),
+                            fontWeight: FontWeight.w500,
+                            color: Colors.blueGrey)),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 5, right: 25),
-                    child: Text(timing,
+                    child: Text(ttiming,
                         style: TextStyle(
                             fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.green)),
+                            fontWeight: FontWeight.w500,
+                            color: Colors.blueGrey)),
                   )
                 ],
               ),
@@ -150,10 +150,11 @@ class Newsdescription extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.only(top: 20),
                     width: width / 1.15,
-                    // height: 200,
+                    height: 200,
                     child: Text(
-                      descriptor,
+                      tdescriptor,
                       textAlign: TextAlign.justify,
+                      
                       style: TextStyle(
                           color: Colors.blueGrey,
                           fontSize: 14,
@@ -169,7 +170,7 @@ class Newsdescription extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       _launchURL() async {
-                        String url = nurl;
+                       String url = turl;
                         if (await canLaunch(url)) {
                           await launch(url);
                         } else {
@@ -178,14 +179,14 @@ class Newsdescription extends StatelessWidget {
                       }
                     },
                     child: Container(
-                      margin: EdgeInsets.only(top: 20, right: 30),
+                      margin: EdgeInsets.only(top: 30, right: 30),
                       width: 100,
                       height: 30,
                       decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.5),
+                          color: Colors.white.withOpacity(0.6),
                           boxShadow: [
                             BoxShadow(
-                                color: Colors.lightBlue.withOpacity(0.5),
+                                color: Color(0xff4181ee).withOpacity(0.5),
                                 blurRadius: 2)
                           ],
                           borderRadius: BorderRadius.circular(50)),
@@ -199,7 +200,7 @@ class Newsdescription extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
-                                      color: Colors.lightBlue))
+                                      color: Color(0xff4181ee)))
                             ],
                           )
                         ],

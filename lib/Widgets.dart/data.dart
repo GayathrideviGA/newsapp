@@ -19,9 +19,9 @@ var pageList = [
 ];
 
 List<List<Color>> gradients = [
-  [Color(0xFF23ade3), Color(0xFF39bb54)],
-  [Color(0xFF23ade3), Color(0xFF39bb54)],
-  [Color(0xFF23ade3), Color(0xFF39bb54)],
+  [Color(0xFF4181ee), Color(0xFF48f5f7)],
+  [Color(0xFF4181ee), Color(0xFF48f5f7)],
+  [Color(0xFF4181ee), Color(0xFF48f5f7)],
 ];
 
 class PageModel {
