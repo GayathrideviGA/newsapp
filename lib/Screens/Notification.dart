@@ -1,4 +1,3 @@
-import 'package:newsapp/Screens/Newsfeedswipe.dart';
 import 'package:flutter/material.dart';
 
 class Notification extends StatefulWidget

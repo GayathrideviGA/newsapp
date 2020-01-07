@@ -1,4 +1,3 @@
-import 'package:newsapp/Screens/Feedback.dart' as prefix0;
 import 'package:newsapp/Screens/Homescreen.dart';
 import 'package:newsapp/Screens/Walkthrough.dart';
 
@@ -8,7 +7,7 @@ import 'package:animated_splash/animated_splash.dart';
 final routes = <String, WidgetBuilder>{
    Walkthrough.tag: (context) => Walkthrough(),
    Homescreen.tag: (context)   => Homescreen(),
-   prefix0.Feedback.tag:(context)   => prefix0.Feedback(),
+   
   };
 
 

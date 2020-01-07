@@ -127,7 +127,51 @@ class _FeedsState extends State<Feeds>
                   width: width,
                   height: 200,
                   color: Colors.white60,
-                  child: ListView.builder(
+                  child: topnews.length == null ? Container(
+            width: width,
+            child: Column
+     (
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: <Widget>
+       [
+         Row
+         (
+           mainAxisAlignment: MainAxisAlignment.center,
+
+           children: <Widget>
+           [
+             Container
+             (
+               width: 150,
+               height: 150,
+               margin: EdgeInsets.all(20),
+               decoration:  BoxDecoration
+               (
+                 image: DecorationImage
+                 (
+                   image: AssetImage('assets/news.png'),
+                   fit: BoxFit.cover
+                 ),
+
+                 
+               )
+             )
+
+
+           ],
+           
+         ),
+         Row
+         (
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>
+            [
+              Text('Your search result not found',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,color: Colors.blueGrey),)
+            ],
+         )
+       ],
+     ),
+          ) :ListView.builder(
                     shrinkWrap: true,
                     itemCount: topnews.length,
                     scrollDirection: Axis.horizontal,
@@ -242,7 +286,51 @@ class _FeedsState extends State<Feeds>
           height: 380,
           color: Colors.white,
 
-          child:ListView.builder(
+          child:latestnews.length == null ? Container(
+            width: width,
+            child: Column
+     (
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: <Widget>
+       [
+         Row
+         (
+           mainAxisAlignment: MainAxisAlignment.center,
+
+           children: <Widget>
+           [
+             Container
+             (
+               width: 150,
+               height: 150,
+               margin: EdgeInsets.all(20),
+               decoration:  BoxDecoration
+               (
+                 image: DecorationImage
+                 (
+                   image: AssetImage('assets/news.png'),
+                   fit: BoxFit.cover
+                 ),
+
+                 
+               )
+             )
+
+
+           ],
+           
+         ),
+         Row
+         (
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>
+            [
+              Text('Your search result not found',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,color: Colors.blueGrey),)
+            ],
+         )
+       ],
+     ),
+          ) :ListView.builder(
             shrinkWrap: true,
             itemCount: latestnews.length,
             itemBuilder: (BuildContext context, int index){

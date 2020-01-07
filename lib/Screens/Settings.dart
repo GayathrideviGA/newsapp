@@ -1,4 +1,3 @@
-import 'package:newsapp/Screens/Feedback.dart' as prefix0;
 import 'package:newsapp/Screens/Language.dart';
 import 'package:newsapp/Screens/Notification.dart' as prefix0;
 import 'package:newsapp/Widgets.dart/Privacy.dart';
@@ -9,19 +8,16 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
-
-
 class Settings extends StatefulWidget {
   static String tag = 'Settings';
   @override
   _SettingsState createState() => _SettingsState();
 }
 
-class _SettingsState extends State<Settings> {
-
-  _launchURL() async {
+class _SettingsState extends State<Settings> 
+{
+ _launchURL() async 
+ {
   const url = 'https://play.google.com/store/apps/details?id=com.nextontop.casttreenews&hl=en';
   if (await canLaunch(url)) {
     await launch(url);
@@ -238,7 +234,7 @@ class _SettingsState extends State<Settings> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
                                 IconButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>prefix0.Feedback()));
+                //    Navigator.push(context, MaterialPageRoute(builder: (context)=>prefix0.Feedback()));
 
                                 },icon: Icon(Icons.arrow_forward_ios,color:Colors.blueGrey),)
                           ],))

@@ -13,7 +13,24 @@ class Bookmark extends StatefulWidget
     {
       double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-      return Scaffold(
+      return SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios, color: Color(0xff4181ee)),
+          ),
+          title: Text(
+            'Bookmark',
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff4181ee)),
+          ),
+        ),
         body: Container(
           width: width,
           height: height,
@@ -780,6 +797,7 @@ class Bookmark extends StatefulWidget
         ),
         ),
       
+      ),
       );
     }
  }

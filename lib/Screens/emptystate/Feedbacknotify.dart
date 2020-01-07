@@ -10,7 +10,8 @@ class Feedbacknotify extends StatefulWidget
 class _FeedbacknotifyState extends State<Feedbacknotify>{
   
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
      backgroundColor: Colors.white,
      body: Column
      (
@@ -49,11 +50,12 @@ class _FeedbacknotifyState extends State<Feedbacknotify>{
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>
             [
-              Text('Feedback sent successfully',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,color: Colors.blueGrey),)
+              Text('Feedback sent successfully',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400, color: Color(0xff4181ee)),)
             ],
          )
        ],
      ),
+    ),
     );
   }
 }

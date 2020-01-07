@@ -1,14 +1,14 @@
 import 'package:newsapp/Screens/emptystate/Feedbacknotify.dart';
 import 'package:flutter/material.dart';
 
-class Feedback extends StatefulWidget
+class Feedbackpage extends StatefulWidget
 {
-  static String tag='Feedback';
+  static String tag='Feedbackpage';
   @override
-  _FeedbackState createState() => _FeedbackState();
+  _FeedbackpageState createState() => _FeedbackpageState();
 } 
 
-class _FeedbackState extends State<Feedback>
+class _FeedbackpageState extends State<Feedbackpage>
 {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final formKey = new GlobalKey<FormState>();
@@ -16,20 +16,21 @@ class _FeedbackState extends State<Feedback>
   Widget build(BuildContext context)
   {
     return Scaffold(
+      backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back_ios, color: Color(0XFF23ade3)),
+            icon: Icon(Icons.arrow_back_ios, color: Color(0xff4181ee)),
           ),
           title: Text(
             'Feedback',
             style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Color(0XFF23ade3)),
+                color: Color(0xff4181ee)),
           ),
         ),
         body: SingleChildScrollView(
@@ -106,7 +107,7 @@ class _FeedbackState extends State<Feedback>
                             shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10)),
                             minWidth: 200,
                             height: 50,
-                            color: Colors.blue[400].withOpacity(0.9),
+                            color:Color(0xff4181ee).withOpacity(0.9),
                             child: Text('Submit',style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.w400),),
                             onPressed: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Feedbacknotify()));
